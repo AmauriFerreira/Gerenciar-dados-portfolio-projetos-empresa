@@ -39,5 +39,17 @@ public class DadosProjetoController {
     public void excluirProjeto(@PathVariable Long id){
         dadosProjetoRepository.deleteById(id);
 
+    
+        }
+
+
+    @PutMapping(path = "/projeto")
+    @ResponseBody
+    public ResponseEntity<Projeto> alterarProjeto(@RequestBody Projeto projetos) {
+        Projeto projeto = dadosProjetoRepository.save(projetos);
+
+        return new ResponseEntity<>(projeto,HttpStatus.CREATED);
+
+
     }
 }
